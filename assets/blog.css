@@ -196,19 +196,19 @@ input[type=button] {
   clear: both; }
 
 .heading-font, h1, h2, h3, h4, h5, h6, form input[type=submit], nav.nav-menu, body > footer .built-with .posthaven-user-menu a, footer.post-footer .responses .response .upvote strong, footer.pagination, main > section.archive .archive-months li a, main > section.archive .archive-months .archive-all-dates {
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: 'Bai Jamjuree', Helvetica, Arial, sans-serif;
+  font-weight: 600;
   line-height: 1.2; }
 
 .body-font, body, form textarea, form input[type=text], form input[type=password] {
-  font-family: 'Merriweather', Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-family: 'Bai Jamjuree', Helvetica, Arial, sans-serif;
+  font-weight: 400;
   line-height: 1.45; }
 
 .light-links a, body > footer a, footer.pagination a, .light-links a:visited, body > footer a:visited, footer.pagination a:visited {
-  color: #ffffaa; }
+  color: #F1890C; }
 .light-links a:hover, body > footer a:hover, footer.pagination a:hover {
-  color: #ffffef; }
+  color: #F1890C; }
 
 .dot-uls ul, body > footer ul, footer.post-footer .tags ul, .dot-uls li, body > footer li, footer.post-footer .tags li {
   display: inline-block; }
@@ -225,9 +225,8 @@ html {
       font-size: 14px; } }
 
 body {
-  background-color: white;
-  color: #eee;
-  background-color: #222; }
+  background-color: #021923;
+  color: #eee; }
 
 p {
   margin-bottom: 1.5em !important; }
@@ -255,9 +254,9 @@ a {
   text-decoration: none;
   transition: color .25s; }
   a, a:visited {
-    color: #ffff66; }
+    color: #F9B513; }
   a:hover {
-    color: #ffffaa; }
+    color: #F1890C; }
 
 form textarea, form input[type=text], form input[type=password], form input[type=submit] {
   font-size: 1em;
@@ -277,7 +276,7 @@ form input[type=submit] {
   border-radius: 2px;
   color: #aaa; }
 form input[type=submit]:hover {
-  background-color: #0a0a0a;
+  background-color: #011018;
   color: #eee; }
 
 body > header, body > main, .footer-content, nav.nav-menu ul {
@@ -302,7 +301,7 @@ body > main {
 
 body > footer {
   margin-top: 2rem;
-  background-color: #0a0a0a; }
+  background-color: #011018; }
   body > footer .footer-content {
     width: 1000px; }
 
@@ -322,7 +321,7 @@ body > footer {
       background-image: url("images/posthaven-icon-4x.png"); } }
 
 nav.nav-menu {
-  background-color: #0a0a0a;
+  background-color: #011018;
   width: 100%;
   margin-bottom: -0.5rem;
   border-bottom: 1px solid #555;
@@ -423,7 +422,7 @@ body > footer {
       border-radius: 3px;
       transition: border-color .25s; }
       body > footer .built-with .posthaven-user-menu a:hover {
-        border-color: #ffffef; }
+        border-color: #F1890C; }
 
 article.post, article.page {
   max-width: 100%; }
@@ -496,7 +495,7 @@ footer.post-footer {
         font-size: 16px;
         content: '§';
         color: #2e2e2e;
-        background-color: #222; }
+        background-color: #021923; }
   footer.post-footer h4 {
     color: #aaa; }
   footer.post-footer .tags {
@@ -639,3 +638,298 @@ main > section.archive {
 .posthaven-private-form .posthaven-field {
   display: inline-block;
   margin-right: 0.25em; }
+
+/* ========================================
+   CUSTOM HEADER - Ronel Kouakep Style
+   ======================================== */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(2, 25, 35, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0;
+}
+
+.site-nav .nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+}
+
+.site-nav .nav-logo img {
+  height: 3rem;
+  width: auto;
+}
+
+.site-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.site-nav .nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.site-nav .nav-links a:hover,
+.site-nav .nav-links a.active {
+  color: #F9B513;
+}
+
+.site-nav .nav-cta {
+  background-color: #F9B513;
+  color: #021923 !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease;
+}
+
+.site-nav .nav-cta:hover {
+  background-color: #F1890C;
+}
+
+/* Adjust body for fixed header */
+body {
+  padding-top: 5rem;
+}
+
+/* Hide old nav menu */
+nav.nav-menu {
+  display: none;
+}
+
+/* Adjust header margin */
+body > header {
+  margin-top: 1rem;
+}
+
+/* Site name and description styling */
+.site-name a {
+  color: #F9B513 !important;
+}
+
+.site-description {
+  font-style: italic;
+  color: #fff;
+}
+
+/* ========================================
+   CUSTOM FOOTER - Ronel Kouakep Style
+   ======================================== */
+.site-footer {
+  background-color: #021923;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+  padding: 2rem 0 1rem;
+}
+
+.site-footer .footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .site-footer .footer-grid {
+    grid-template-columns: 2fr 1.5fr 1fr;
+  }
+}
+
+.site-footer .footer-brand .footer-logo {
+  height: 3.5rem;
+  width: auto;
+  margin-bottom: 0.5rem;
+}
+
+.site-footer .footer-tagline {
+  color: #F9B513;
+  font-style: italic;
+  font-size: 0.875rem;
+  margin: 0 !important;
+}
+
+.site-footer h4 {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.site-footer .social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.site-footer .social-links a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+
+.site-footer .social-links a:hover {
+  color: #F9B513;
+}
+
+.site-footer .footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer .footer-contact li {
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.site-footer .footer-contact li:after {
+  content: none;
+}
+
+.site-footer .footer-contact a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-contact a:hover {
+  color: #F9B513;
+}
+
+.site-footer .footer-contact .cta-link {
+  color: #F9B513;
+  font-weight: 500;
+}
+
+.site-footer .footer-contact .cta-link:hover {
+  color: #F1890C;
+}
+
+.site-footer .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 600px) {
+  .site-footer .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+/* Show new footer, hide old footer content */
+body > footer.site-footer {
+  display: block !important;
+}
+
+body > footer .footer-content {
+  display: none;
+}
+
+/* Mobile responsive header */
+@media (max-width: 768px) {
+  .site-nav .nav-links {
+    display: none;
+  }
+
+  .site-nav .nav-cta {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+/* ========================================
+   POST SEPARATION - Contrast between posts
+   ======================================== */
+article.post {
+  padding: 4rem 6rem;
+  margin-bottom: 0;
+}
+
+/* Odd posts - light selective yellow background */
+article.post:nth-child(odd) {
+  background-color: rgba(249, 181, 19, 0.08);
+}
+
+/* Even posts - light tangerine background */
+article.post:nth-child(even) {
+  background-color: rgba(241, 137, 12, 0.06);
+}
+
+@media (max-width: 768px) {
+  article.post {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* ========================================
+   BACK TO TOP BUTTON
+   ======================================== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: #F9B513;
+  color: #021923;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 99;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:hover {
+  background-color: #F1890C;
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .back-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
+}

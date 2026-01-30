@@ -1,12 +1,17 @@
-{% if site.navigation_menu.items != empty %}
-  <nav class="nav-menu">
-    <ul>
-      <li class="posthaven-icon">
-        <a href="{{ posthaven.url }}" alt="Posthaven"><span></span></a>
-      </li>
-    {% for menu_item in site.navigation_menu.items %}
-      <li class="{{ menu_item.url | text_if_current}}"><a href="{{ menu_item.url }}">{{ menu_item.title }}</a></li>
-    {% endfor %}
-    </ul>
-  </nav>
-{% endif %}
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="https://ronelkouakep.com" class="nav-logo">
+      <img src="https://ronelkouakep.com/images/ronel-kouakep-logo.png" alt="Ronel Kouakep" />
+    </a>
+
+    <div class="nav-links">
+      <a href="https://ronelkouakep.com/about">A propos</a>
+      <a href="https://ronelkouakep.com/services">Services</a>
+      <a href="https://ronelkouakep.com/portfolio">Portfolio</a>
+      <a href="{{ site.url }}" class="active">Blog</a>
+      <a href="https://ronelkouakep.com/contact">Contact</a>
+    </div>
+
+    <a href="https://ronelkouakep.com/booking" class="nav-cta">Prendre RDV</a>
+  </div>
+</nav>
