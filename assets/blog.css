@@ -797,9 +797,15 @@ main > section.archive {
     main > section.archive .archive-results li {
       margin-bottom: 1.25rem;
       padding-bottom: 1.25rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: none; }
 
-    main > section.archive .archive-results li:last-child {
+    /* Show first 10 results only */
+    main > section.archive .archive-results li:nth-child(-n+10) {
+      display: block; }
+
+    main > section.archive .archive-results li:last-child,
+    main > section.archive .archive-results li:nth-child(10) {
       border-bottom: none;
       margin-bottom: 0;
       padding-bottom: 0; }
@@ -834,8 +840,8 @@ main > section.archive {
   main > section.archive .archive-pagination {
     margin-top: 1.5rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem; }
+    justify-content: space-between;
+    padding: 0 2rem; }
 
     main > section.archive .archive-pagination a {
       color: #F9B513;
