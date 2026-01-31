@@ -308,11 +308,35 @@
       applyTranslations(currentLang);
     }
 
+    // Re-apply translations for dynamically loaded content (like archive pages)
+    function initWithRetry() {
+      init();
+
+      // For archive page: Posthaven loads content dynamically via JavaScript
+      // We need to wait for it and re-apply translations
+      if (window.location.pathname.includes('archive')) {
+        var attempts = 0;
+        var maxAttempts = 20;
+        var checkInterval = setInterval(function() {
+          attempts++;
+          var monthElements = document.querySelectorAll('[data-month-date]');
+          var dateElements = document.querySelectorAll('[data-archive-date]');
+
+          if (monthElements.length > 0 || dateElements.length > 0) {
+            init();
+            clearInterval(checkInterval);
+          } else if (attempts >= maxAttempts) {
+            clearInterval(checkInterval);
+          }
+        }, 200);
+      }
+    }
+
     // Ensure DOM is ready before applying translations
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', initWithRetry);
     } else {
-      init();
+      initWithRetry();
     }
   })();
 </script>
