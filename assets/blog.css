@@ -841,7 +841,7 @@ main > section.archive {
     margin-top: 1.5rem;
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem; }
+    width: 100%; }
 
     main > section.archive .archive-pagination a {
       color: #F9B513;
@@ -853,7 +853,7 @@ main > section.archive {
       color: #F1890C; }
 
     main > section.archive .archive-pagination a.posthaven-archive-disabled {
-      display: none; }
+      visibility: hidden; }
 
   /* Responsive archive layout */
   @media (max-width: 768px) {
