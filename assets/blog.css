@@ -850,13 +850,16 @@ main > section.archive {
       font-weight: 600;
       transition: color 0.3s ease; }
 
+    main > section.archive .archive-pagination .pagination-placeholder {
+      flex: 1; }
+
     main > section.archive .archive-pagination a.pagination-prev {
-      order: 1;
-      margin-right: auto; }
+      flex: 1;
+      text-align: left; }
 
     main > section.archive .archive-pagination a.pagination-next {
-      order: 2;
-      margin-left: auto; }
+      flex: 1;
+      text-align: right; }
 
     main > section.archive .archive-pagination a:hover {
       color: #F1890C; }
