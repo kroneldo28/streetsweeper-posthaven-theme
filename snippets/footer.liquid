@@ -97,7 +97,6 @@
         'archive.browseByDate': 'Parcourir par date',
         'archive.results': 'Résultats',
         'archive.loadMore': 'Charger plus →',
-        'archive.loadMoreResults': 'Charger plus →',
         'archive.searchPlaceholder': 'Rechercher sur ce site',
         'archive.next': 'Suivant →',
         'archive.prev': '← Précédent'
@@ -128,7 +127,6 @@
         'archive.browseByDate': 'Browse by date',
         'archive.results': 'Results',
         'archive.loadMore': 'Load more →',
-        'archive.loadMoreResults': 'Load more →',
         'archive.searchPlaceholder': 'Search this site',
         'archive.next': 'Next →',
         'archive.prev': '← Previous'
@@ -351,7 +349,6 @@
           if (monthElements.length > 0 || dateElements.length > 0) {
             init();
             initLoadMoreButton();
-            initLoadMoreResults();
             clearInterval(checkInterval);
           } else if (attempts >= maxAttempts) {
             clearInterval(checkInterval);
@@ -389,39 +386,6 @@
           loadMoreLink.classList.add('hidden');
         } else {
           archiveMonths.classList.add('show-' + currentVisible);
-        }
-      });
-    }
-
-    // Load more results link functionality
-    function initLoadMoreResults() {
-      var archiveResults = document.querySelector('.archive-results');
-      var loadMoreLink = document.querySelector('.load-more-results');
-
-      if (!archiveResults || !loadMoreLink) return;
-
-      var resultItems = archiveResults.querySelectorAll('.archive-entry');
-      var totalResults = resultItems.length;
-      var currentVisible = 5;
-      var increment = 5;
-
-      // Hide link if 5 or fewer results
-      if (totalResults <= 5) {
-        loadMoreLink.classList.add('hidden');
-        return;
-      }
-
-      loadMoreLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        currentVisible += increment;
-
-        // Apply the appropriate class
-        archiveResults.className = 'archive-results';
-        if (currentVisible >= totalResults) {
-          archiveResults.classList.add('show-all-results');
-          loadMoreLink.classList.add('hidden');
-        } else {
-          archiveResults.classList.add('show-results-' + currentVisible);
         }
       });
     }
