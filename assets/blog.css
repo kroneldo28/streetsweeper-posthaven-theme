@@ -833,28 +833,20 @@ main > section.archive {
 
   main > section.archive .archive-pagination {
     margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.85rem;
     text-align: center; }
 
     main > section.archive .archive-pagination a {
-      display: inline-block;
-      margin: 0 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: rgba(249, 181, 19, 0.1);
-      border-radius: 0.25rem;
       color: #F9B513;
-      transition: all 0.3s ease; }
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      display: inline-block; }
 
     main > section.archive .archive-pagination a:hover {
-      background-color: #F9B513;
-      color: #021923; }
+      color: #F1890C; }
 
     main > section.archive .archive-pagination a.posthaven-archive-disabled {
-      color: rgba(255, 255, 255, 0.3);
-      background-color: transparent;
-      cursor: not-allowed; }
+      display: none; }
 
   /* Responsive archive layout */
   @media (max-width: 768px) {
