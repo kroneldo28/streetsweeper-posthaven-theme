@@ -1,2 +1,189 @@
-<h2>404 &ndash; Not Found</h2>
-<h4>Sorry, but we couldn't find the post you were looking for.</h4>
+<section class="error-404">
+  <div class="error-icon">
+    <svg viewBox="0 0 120 120" class="k-icon-animated">
+      <!-- Background circle -->
+      <circle cx="60" cy="60" r="55" class="bg-circle" />
+
+      <!-- Letter K -->
+      <g class="letter-k">
+        <!-- Vertical bar -->
+        <rect x="35" y="30" width="12" height="60" rx="2" class="k-bar" />
+        <!-- Upper diagonal -->
+        <polygon points="47,55 85,30 85,45 55,65" class="k-upper" />
+        <!-- Lower diagonal -->
+        <polygon points="47,65 55,65 85,90 85,75" class="k-lower" />
+      </g>
+
+      <!-- Question mark overlay -->
+      <text x="75" y="50" class="question-mark">?</text>
+    </svg>
+  </div>
+
+  <h1 class="error-code">404</h1>
+  <h2 class="error-title" data-i18n="error.title">Page introuvable</h2>
+  <p class="error-message" data-i18n="error.message">Oups ! La page que tu cherches n'existe pas ou a été déplacée.</p>
+
+  <div class="error-actions">
+    <a href="/" class="btn-primary" data-i18n="error.backHome">Retour à l'accueil</a>
+    <a href="/archive" class="btn-secondary" data-i18n="error.browseArchives">Parcourir les archives</a>
+  </div>
+</section>
+
+<style>
+.error-404 {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-icon {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 2rem;
+}
+
+.k-icon-animated {
+  width: 100%;
+  height: 100%;
+}
+
+.k-icon-animated .bg-circle {
+  fill: rgba(249, 181, 19, 0.1);
+  stroke: #F9B513;
+  stroke-width: 2;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.k-icon-animated .letter-k {
+  fill: #F9B513;
+  animation: float 3s ease-in-out infinite;
+}
+
+.k-icon-animated .k-bar {
+  animation: slideIn 0.5s ease-out;
+}
+
+.k-icon-animated .k-upper {
+  animation: slideInRight 0.6s ease-out 0.2s both;
+}
+
+.k-icon-animated .k-lower {
+  animation: slideInRight 0.6s ease-out 0.4s both;
+}
+
+.k-icon-animated .question-mark {
+  fill: #F1890C;
+  font-size: 28px;
+  font-weight: bold;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(5deg); }
+  75% { transform: translateY(-3px) rotate(-5deg); }
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #F9B513;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(249, 181, 19, 0.3);
+}
+
+.error-title {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 1rem 0 0.5rem;
+}
+
+.error-message {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  max-width: 400px;
+  margin: 0 auto 2rem;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.error-actions .btn-primary {
+  background-color: #F9B513;
+  color: #021923;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.error-actions .btn-primary:hover {
+  background-color: #F1890C;
+  transform: translateY(-2px);
+}
+
+.error-actions .btn-secondary {
+  background-color: transparent;
+  color: #F9B513;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #F9B513;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.error-actions .btn-secondary:hover {
+  background-color: rgba(249, 181, 19, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 4rem;
+  }
+
+  .error-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .error-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .error-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>
