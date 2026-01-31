@@ -3,10 +3,10 @@
     <div class="footer-grid">
       <!-- Brand -->
       <div class="footer-brand">
-        <a href="https://ronelkouakep.com">
+        <a href="https://ronelkouakep.com" data-i18n-href="home">
           <img src="https://ronelkouakep.com/images/ronel-kouakep-logo.png" alt="Ronel Kouakep" class="footer-logo" />
         </a>
-        <p class="footer-tagline">Reflexions sur la vie, le business et l'Afrique.</p>
+        <p class="footer-tagline">#TheStreetSweeper</p>
       </div>
 
       <!-- Social Links -->
@@ -29,11 +29,10 @@
 
       <!-- Contact -->
       <div class="footer-contact">
-        <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:ronel@ronelkouakep.com">M'envoyer un mail</a></li>
-          <li><a href="https://wa.me/33612495192" target="_blank" rel="noopener noreferrer">M'ecrire sur WhatsApp</a></li>
-          <li><a href="https://ronelkouakep.com/booking" class="cta-link">Reserve ta session gratuite &rarr;</a></li>
+          <li><a href="mailto:ronel@ronelkouakep.com" data-i18n="footer.email">M'envoyer un mail</a></li>
+          <li><a href="https://wa.me/33612495192" target="_blank" rel="noopener noreferrer" data-i18n="footer.whatsapp">M'ecrire sur WhatsApp</a></li>
+          <li><a href="https://ronelkouakep.com/booking" class="cta-link" data-i18n="footer.cta" data-i18n-href="booking">Reserve ta session gratuite &rarr;</a></li>
         </ul>
       </div>
     </div>
@@ -41,7 +40,7 @@
     <!-- Bottom -->
     <div class="footer-bottom">
       <span>From 🇨🇲 with ❤️</span>
-      <span>&copy; {{ 'now' | date: '%Y' }} Ronel Kouakep. Tous droits réservés.</span>
+      <span data-i18n="footer.copyright">&copy; {{ 'now' | date: '%Y' }} Ronel Kouakep. Tous droits réservés.</span>
     </div>
   </div>
 </footer>
@@ -55,6 +54,7 @@
 
 <script>
   (function() {
+    // Back to top button
     var btn = document.getElementById('backToTop');
     window.addEventListener('scroll', function() {
       if (window.scrollY > 300) {
@@ -67,5 +67,119 @@
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Internationalization
+    var translations = {
+      fr: {
+        'nav.about': 'A propos',
+        'nav.services': 'Services',
+        'nav.portfolio': 'Portfolio',
+        'nav.blog': 'Blog',
+        'nav.contact': 'Contact',
+        'nav.cta': 'Prendre RDV',
+        'footer.contact': 'Contact',
+        'footer.email': 'M\'envoyer un mail',
+        'footer.whatsapp': 'M\'ecrire sur WhatsApp',
+        'footer.cta': 'Reserve ta session gratuite →',
+        'footer.copyright': '© ' + new Date().getFullYear() + ' Ronel Kouakep. Tous droits réservés.',
+        'post.readMore': 'Lire la suite →'
+      },
+      en: {
+        'nav.about': 'About',
+        'nav.services': 'Services',
+        'nav.portfolio': 'Portfolio',
+        'nav.blog': 'Blog',
+        'nav.contact': 'Contact',
+        'nav.cta': 'Book Now',
+        'footer.contact': 'Contact',
+        'footer.email': 'Send me an email',
+        'footer.whatsapp': 'Message me on WhatsApp',
+        'footer.cta': 'Book your free session →',
+        'footer.copyright': '© ' + new Date().getFullYear() + ' Ronel Kouakep. All rights reserved.',
+        'post.readMore': 'Read more →'
+      }
+    };
+
+    var routes = {
+      fr: {
+        home: 'https://ronelkouakep.com/fr',
+        about: 'https://ronelkouakep.com/fr/about',
+        services: 'https://ronelkouakep.com/fr/services',
+        portfolio: 'https://ronelkouakep.com/fr/portfolio',
+        contact: 'https://ronelkouakep.com/fr/contact',
+        booking: 'https://ronelkouakep.com/fr/booking'
+      },
+      en: {
+        home: 'https://ronelkouakep.com/en',
+        about: 'https://ronelkouakep.com/en/about',
+        services: 'https://ronelkouakep.com/en/services',
+        portfolio: 'https://ronelkouakep.com/en/portfolio',
+        contact: 'https://ronelkouakep.com/en/contact',
+        booking: 'https://ronelkouakep.com/en/booking'
+      }
+    };
+
+    function detectLanguage() {
+      // Check URL parameter first (highest priority)
+      var urlParams = new URLSearchParams(window.location.search);
+      var langParam = urlParams.get('lang');
+      if (langParam && (langParam === 'en' || langParam === 'fr')) {
+        localStorage.setItem('blogLang', langParam);
+        return langParam;
+      }
+
+      // Check referrer for language (before localStorage to catch navigation from main site)
+      var referrer = document.referrer;
+      if (referrer && referrer.includes('ronelkouakep.com')) {
+        if (referrer.includes('/en/') || referrer.includes('/en?') || referrer.endsWith('/en')) {
+          localStorage.setItem('blogLang', 'en');
+          return 'en';
+        }
+        if (referrer.includes('/fr/') || referrer.includes('/fr?') || referrer.endsWith('/fr')) {
+          localStorage.setItem('blogLang', 'fr');
+          return 'fr';
+        }
+      }
+
+      // Check localStorage (for returning visitors)
+      var storedLang = localStorage.getItem('blogLang');
+      if (storedLang && (storedLang === 'en' || storedLang === 'fr')) {
+        return storedLang;
+      }
+
+      // Check browser language as fallback
+      var browserLang = navigator.language || navigator.userLanguage;
+      if (browserLang && browserLang.startsWith('en')) {
+        return 'en';
+      }
+
+      // Default to French
+      return 'fr';
+    }
+
+    function applyTranslations(lang) {
+      var t = translations[lang];
+      var r = routes[lang];
+
+      // Apply text translations
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          el.textContent = t[key];
+        }
+      });
+
+      // Apply href translations
+      document.querySelectorAll('[data-i18n-href]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-href');
+        if (r[key]) {
+          el.setAttribute('href', r[key]);
+        }
+      });
+    }
+
+    // Apply translations on page load
+    var currentLang = detectLanguage();
+    applyTranslations(currentLang);
   })();
 </script>

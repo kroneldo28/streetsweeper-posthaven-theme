@@ -31,11 +31,14 @@
     {% if post.url.current_page? %}
       {{ post.body }}
     {% else %}
-      {{ post.excerpt_or_body }}
+      {{ post.excerpt_or_body | truncatewords: 50 }}
     {% endif %}
   </div>
 
   {% unless post.url.current_page? %}
+    <div class="read-more">
+      <a href="{{ post.url }}" data-i18n="post.readMore">Lire la suite &rarr;</a>
+    </div>
     {% if post.response_count > 0 %}
       <div class="response-count">
         <a href="{{ post.url }}#comments" alt="{{ post.title }}">
