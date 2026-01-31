@@ -249,6 +249,57 @@
           el.textContent = count + ' ' + form;
         }
       });
+
+      // Apply archive month date formatting (e.g., "January 2025" -> "janvier 2025")
+      document.querySelectorAll('[data-month-date]').forEach(function(el) {
+        var dateStr = el.getAttribute('data-month-date');
+        if (dateStr) {
+          el.textContent = formatMonthDate(dateStr, lang);
+        }
+      });
+
+      // Apply archive result date formatting
+      document.querySelectorAll('[data-archive-date]').forEach(function(el) {
+        var dateStr = el.getAttribute('data-archive-date');
+        if (dateStr) {
+          el.textContent = formatArchiveDate(dateStr, lang);
+        }
+      });
+    }
+
+    // Format month date like "January 2025" -> "janvier 2025" (FR)
+    function formatMonthDate(dateStr, lang) {
+      // Parse "Month Year" format
+      var parts = dateStr.trim().split(' ');
+      if (parts.length === 2) {
+        var monthEn = parts[0];
+        var year = parts[1];
+        var monthIndex = months.en.indexOf(monthEn);
+        if (monthIndex !== -1) {
+          return months[lang][monthIndex] + ' ' + year;
+        }
+      }
+      return dateStr;
+    }
+
+    // Format archive date like "January 1, 2025" -> "1 janvier 2025" (FR)
+    function formatArchiveDate(dateStr, lang) {
+      // Try to parse "Month Day, Year" format
+      var match = dateStr.match(/^(\w+)\s+(\d+),?\s+(\d{4})$/);
+      if (match) {
+        var monthEn = match[1];
+        var day = parseInt(match[2], 10);
+        var year = match[3];
+        var monthIndex = months.en.indexOf(monthEn);
+        if (monthIndex !== -1) {
+          if (lang === 'fr') {
+            return day + ' ' + months[lang][monthIndex] + ' ' + year;
+          } else {
+            return months[lang][monthIndex] + ' ' + day + ', ' + year;
+          }
+        }
+      }
+      return dateStr;
     }
 
     // Apply translations on page load

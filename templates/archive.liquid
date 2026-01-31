@@ -11,7 +11,7 @@
     <ul>
       {% archive_months %}
         <li>
-          <a href={{ month.url }}>{{ month.date }}</a>
+          <a href={{ month.url }} data-month-date="{{ month.date }}">{{ month.date }}</a>
           <span class="month-count">({{ month.count }})</span>
         </li>
       {% endarchive_months %}
@@ -30,7 +30,7 @@
           <div class="search-highlight">
             {{ result.snippet }}
           </div>
-          <div class="archive-date">
+          <div class="archive-date" data-archive-date="{{ result.date }}">
             {{ result.date }}
           </div>
         </li>
