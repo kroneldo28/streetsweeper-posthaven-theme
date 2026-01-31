@@ -839,9 +839,8 @@ main > section.archive {
 
   main > section.archive .archive-pagination {
     margin-top: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%; }
 
     main > section.archive .archive-pagination a {
@@ -850,15 +849,12 @@ main > section.archive {
       font-weight: 600;
       transition: color 0.3s ease; }
 
-    main > section.archive .archive-pagination .pagination-placeholder {
-      flex: 1; }
-
     main > section.archive .archive-pagination a.pagination-prev {
-      flex: 1;
+      grid-column: 1;
       text-align: left; }
 
     main > section.archive .archive-pagination a.pagination-next {
-      flex: 1;
+      grid-column: 2;
       text-align: right; }
 
     main > section.archive .archive-pagination a:hover {
