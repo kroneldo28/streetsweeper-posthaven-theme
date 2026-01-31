@@ -96,7 +96,7 @@
         'archive.searchTitle': 'Rechercher',
         'archive.browseByDate': 'Parcourir par date',
         'archive.results': 'Résultats',
-        'archive.loadMore': 'Charger plus'
+        'archive.loadMore': 'Charger plus →'
       },
       en: {
         'nav.about': 'About',
@@ -123,7 +123,7 @@
         'archive.searchTitle': 'Search',
         'archive.browseByDate': 'Browse by date',
         'archive.results': 'Results',
-        'archive.loadMore': 'Load more'
+        'archive.loadMore': 'Load more →'
       }
     };
 
@@ -335,32 +335,33 @@
       }
     }
 
-    // Load more months button functionality
+    // Load more months link functionality
     function initLoadMoreButton() {
       var archiveMonths = document.querySelector('.archive-months');
-      var loadMoreBtn = document.querySelector('.load-more-months');
+      var loadMoreLink = document.querySelector('.load-more-months');
 
-      if (!archiveMonths || !loadMoreBtn) return;
+      if (!archiveMonths || !loadMoreLink) return;
 
       var monthItems = archiveMonths.querySelectorAll('li');
       var totalMonths = monthItems.length;
       var currentVisible = 12;
-      var increment = 3;
+      var increment = 3; // Always add a full row (3 columns)
 
-      // Hide button if 12 or fewer months
+      // Hide link if 12 or fewer months
       if (totalMonths <= 12) {
-        loadMoreBtn.classList.add('hidden');
+        loadMoreLink.classList.add('hidden');
         return;
       }
 
-      loadMoreBtn.addEventListener('click', function() {
+      loadMoreLink.addEventListener('click', function(e) {
+        e.preventDefault();
         currentVisible += increment;
 
         // Apply the appropriate class
         archiveMonths.className = 'archive-months';
         if (currentVisible >= totalMonths) {
           archiveMonths.classList.add('show-all');
-          loadMoreBtn.classList.add('hidden');
+          loadMoreLink.classList.add('hidden');
         } else {
           archiveMonths.classList.add('show-' + currentVisible);
         }

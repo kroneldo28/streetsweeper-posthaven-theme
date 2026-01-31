@@ -713,13 +713,23 @@ main > section.archive {
     main > section.archive .archive-months li:nth-child(-n+12) {
       display: block; }
 
-    /* When expanded, show 3 more items per click */
+    /* When expanded, show 3 more items per click (full rows) */
     main > section.archive .archive-months.show-15 li:nth-child(-n+15) { display: block; }
     main > section.archive .archive-months.show-18 li:nth-child(-n+18) { display: block; }
     main > section.archive .archive-months.show-21 li:nth-child(-n+21) { display: block; }
     main > section.archive .archive-months.show-24 li:nth-child(-n+24) { display: block; }
     main > section.archive .archive-months.show-27 li:nth-child(-n+27) { display: block; }
     main > section.archive .archive-months.show-30 li:nth-child(-n+30) { display: block; }
+    main > section.archive .archive-months.show-33 li:nth-child(-n+33) { display: block; }
+    main > section.archive .archive-months.show-36 li:nth-child(-n+36) { display: block; }
+    main > section.archive .archive-months.show-39 li:nth-child(-n+39) { display: block; }
+    main > section.archive .archive-months.show-42 li:nth-child(-n+42) { display: block; }
+    main > section.archive .archive-months.show-45 li:nth-child(-n+45) { display: block; }
+    main > section.archive .archive-months.show-48 li:nth-child(-n+48) { display: block; }
+    main > section.archive .archive-months.show-51 li:nth-child(-n+51) { display: block; }
+    main > section.archive .archive-months.show-54 li:nth-child(-n+54) { display: block; }
+    main > section.archive .archive-months.show-57 li:nth-child(-n+57) { display: block; }
+    main > section.archive .archive-months.show-60 li:nth-child(-n+60) { display: block; }
     main > section.archive .archive-months.show-all li { display: block; }
 
     main > section.archive .archive-months li a {
@@ -737,23 +747,15 @@ main > section.archive {
 
     main > section.archive .archive-months .load-more-months {
       margin-top: 1rem;
-      padding: 0.5rem 1.5rem;
-      background-color: rgba(249, 181, 19, 0.1);
-      border: 1px solid rgba(249, 181, 19, 0.3);
-      border-radius: 0.5rem;
       color: #F9B513;
-      font-size: 0.875rem;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      display: block;
-      width: 100%;
-      text-align: center; }
+      transition: color 0.3s ease;
+      display: inline-block; }
 
     main > section.archive .archive-months .load-more-months:hover {
-      background-color: #F9B513;
-      color: #021923;
-      border-color: #F9B513; }
+      color: #F1890C; }
 
     main > section.archive .archive-months .load-more-months.hidden {
       display: none; }
