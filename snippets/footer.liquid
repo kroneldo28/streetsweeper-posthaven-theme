@@ -95,7 +95,8 @@
         'archive.title': 'Archives',
         'archive.searchTitle': 'Rechercher',
         'archive.browseByDate': 'Parcourir par date',
-        'archive.results': 'Résultats'
+        'archive.results': 'Résultats',
+        'archive.loadMore': 'Charger plus'
       },
       en: {
         'nav.about': 'About',
@@ -121,7 +122,8 @@
         'archive.title': 'Archives',
         'archive.searchTitle': 'Search',
         'archive.browseByDate': 'Browse by date',
-        'archive.results': 'Results'
+        'archive.results': 'Results',
+        'archive.loadMore': 'Load more'
       }
     };
 
@@ -324,12 +326,45 @@
 
           if (monthElements.length > 0 || dateElements.length > 0) {
             init();
+            initLoadMoreButton();
             clearInterval(checkInterval);
           } else if (attempts >= maxAttempts) {
             clearInterval(checkInterval);
           }
         }, 200);
       }
+    }
+
+    // Load more months button functionality
+    function initLoadMoreButton() {
+      var archiveMonths = document.querySelector('.archive-months');
+      var loadMoreBtn = document.querySelector('.load-more-months');
+
+      if (!archiveMonths || !loadMoreBtn) return;
+
+      var monthItems = archiveMonths.querySelectorAll('li');
+      var totalMonths = monthItems.length;
+      var currentVisible = 12;
+      var increment = 3;
+
+      // Hide button if 12 or fewer months
+      if (totalMonths <= 12) {
+        loadMoreBtn.classList.add('hidden');
+        return;
+      }
+
+      loadMoreBtn.addEventListener('click', function() {
+        currentVisible += increment;
+
+        // Apply the appropriate class
+        archiveMonths.className = 'archive-months';
+        if (currentVisible >= totalMonths) {
+          archiveMonths.classList.add('show-all');
+          loadMoreBtn.classList.add('hidden');
+        } else {
+          archiveMonths.classList.add('show-' + currentVisible);
+        }
+      });
     }
 
     // Ensure DOM is ready before applying translations

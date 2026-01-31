@@ -684,8 +684,7 @@ main > section.archive {
     gap: 2rem; }
 
   main > section.archive .archive-months {
-    width: 220px;
-    flex-shrink: 0;
+    width: 100%;
     padding: 1.5rem;
     background-color: rgba(1, 16, 24, 0.5);
     border-radius: 0.5rem;
@@ -696,16 +695,32 @@ main > section.archive {
       color: #F9B513;
       margin-bottom: 1rem; }
 
-    main > section.archive .archive-months ul {
+    main > section.archive .archive-months ul.months-grid {
       list-style: none;
-      padding-left: 0; }
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem 1rem; }
 
     main > section.archive .archive-months li {
-      margin-bottom: 0.5rem;
-      display: block; }
+      margin-bottom: 0;
+      display: none; }
 
     main > section.archive .archive-months li:after {
       content: none; }
+
+    /* Show first 12 months by default (4 rows x 3 columns) */
+    main > section.archive .archive-months li:nth-child(-n+12) {
+      display: block; }
+
+    /* When expanded, show 3 more items per click */
+    main > section.archive .archive-months.show-15 li:nth-child(-n+15) { display: block; }
+    main > section.archive .archive-months.show-18 li:nth-child(-n+18) { display: block; }
+    main > section.archive .archive-months.show-21 li:nth-child(-n+21) { display: block; }
+    main > section.archive .archive-months.show-24 li:nth-child(-n+24) { display: block; }
+    main > section.archive .archive-months.show-27 li:nth-child(-n+27) { display: block; }
+    main > section.archive .archive-months.show-30 li:nth-child(-n+30) { display: block; }
+    main > section.archive .archive-months.show-all li { display: block; }
 
     main > section.archive .archive-months li a {
       font-size: 0.9rem;
@@ -720,18 +735,46 @@ main > section.archive {
       color: rgba(255, 255, 255, 0.4);
       margin-left: 0.25rem; }
 
-    main > section.archive .archive-months .archive-all-dates {
+    main > section.archive .archive-months .load-more-months {
       margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.85rem; }
+      padding: 0.5rem 1.5rem;
+      background-color: rgba(249, 181, 19, 0.1);
+      border: 1px solid rgba(249, 181, 19, 0.3);
+      border-radius: 0.5rem;
+      color: #F9B513;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      width: 100%;
+      text-align: center; }
 
-    main > section.archive .archive-months .archive-all-dates a {
-      color: #F9B513; }
+    main > section.archive .archive-months .load-more-months:hover {
+      background-color: #F9B513;
+      color: #021923;
+      border-color: #F9B513; }
+
+    main > section.archive .archive-months .load-more-months.hidden {
+      display: none; }
+
+    main > section.archive .archive-months .archive-all-dates {
+      display: none; }
 
     main > section.archive .archive-months .posthaven-archive-selected a {
       color: #F9B513;
       font-weight: 600; }
+
+  /* Responsive: 2 columns on tablet, 1 on mobile */
+  @media (max-width: 768px) {
+    main > section.archive .archive-months ul.months-grid {
+      grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    main > section.archive .archive-months ul.months-grid {
+      grid-template-columns: 1fr; }
+  }
 
   main > section.archive .archive-results {
     flex: 1;
