@@ -1,7 +1,13 @@
 <section class="archive">
-  <h2>Archive</h2>
+  <h2 data-i18n="archive.title">Archives</h2>
+
+  <div class="archive-search">
+    <h4 data-i18n="archive.searchTitle">Rechercher</h4>
+    {% form 'archive' %}
+  </div>
+
   <div class="archive-months">
-    <h4>Browse By Date</h4>
+    <h4 data-i18n="archive.browseByDate">Parcourir par date</h4>
     <ul>
       {% archive_months %}
         <li>
@@ -14,7 +20,7 @@
   </div>
 
   <div class="archive-results">
-    {% form 'archive' %}
+    <h4 data-i18n="archive.results">Résultats</h4>
     <ul>
       {% archive_results %}
         <li class="archive-entry">

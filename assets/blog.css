@@ -574,56 +574,217 @@ footer.pagination {
 
 main > section.archive {
   display: flex;
-  flex-flow: row;
-  flex-wrap: wrap; }
+  flex-flow: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(249, 181, 19, 0.05);
+  border-radius: 0.5rem; }
+
   main > section.archive h2 {
-    width: 100%; }
-  main > section.archive .archive-months {
-    width: 200px;
-    margin-bottom: 1em; }
-    main > section.archive .archive-months h4 {
+    width: 100%;
+    color: #F9B513;
+    font-size: 1.8rem;
+    margin-bottom: 0; }
+
+  /* Search section */
+  main > section.archive .archive-search {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: rgba(1, 16, 24, 0.5);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1); }
+
+    main > section.archive .archive-search h4 {
+      font-size: 1rem;
+      color: #F9B513;
+      margin-bottom: 1rem; }
+
+    main > section.archive .archive-search form {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap; }
+
+    main > section.archive .archive-search input[type="text"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.75rem 1rem;
+      background-color: rgba(2, 25, 35, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
+      color: #fff;
       font-size: 0.9rem;
-      color: #aaa; }
+      transition: border-color 0.3s ease; }
+
+    main > section.archive .archive-search input[type="text"]:focus {
+      outline: none;
+      border-color: #F9B513; }
+
+    main > section.archive .archive-search input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.4); }
+
+    main > section.archive .archive-search input[type="submit"] {
+      padding: 0.75rem 1.5rem;
+      background-color: #F9B513;
+      color: #021923;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease; }
+
+    main > section.archive .archive-search input[type="submit"]:hover {
+      background-color: #F1890C; }
+
+  /* Archive layout - dates and results side by side */
+  main > section.archive .archive-content {
+    display: flex;
+    gap: 2rem; }
+
+  main > section.archive .archive-months {
+    width: 220px;
+    flex-shrink: 0;
+    padding: 1.5rem;
+    background-color: rgba(1, 16, 24, 0.5);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1); }
+
+    main > section.archive .archive-months h4 {
+      font-size: 1rem;
+      color: #F9B513;
+      margin-bottom: 1rem; }
+
     main > section.archive .archive-months ul {
       list-style: none;
       padding-left: 0; }
+
+    main > section.archive .archive-months li {
+      margin-bottom: 0.5rem;
+      display: block; }
+
+    main > section.archive .archive-months li:after {
+      content: none; }
+
     main > section.archive .archive-months li a {
-      font-size: 0.9rem; }
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      transition: color 0.3s ease; }
+
+    main > section.archive .archive-months li a:hover {
+      color: #F9B513; }
+
     main > section.archive .archive-months .month-count {
       font-size: 0.75rem;
-      color: #555; }
+      color: rgba(255, 255, 255, 0.4);
+      margin-left: 0.25rem; }
+
     main > section.archive .archive-months .archive-all-dates {
-      margin-top: 0.5em;
-      font-size: 0.8em; }
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem; }
+
+    main > section.archive .archive-months .archive-all-dates a {
+      color: #F9B513; }
+
     main > section.archive .archive-months .posthaven-archive-selected a {
-      color: inherit; }
+      color: #F9B513;
+      font-weight: 600; }
+
   main > section.archive .archive-results {
-    flex: 1; }
-    main > section.archive .archive-results form, main > section.archive .archive-results input {
-      margin-bottom: 0.75em;
-      width: 100%; }
+    flex: 1;
+    padding: 1.5rem;
+    background-color: rgba(1, 16, 24, 0.5);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1); }
+
+    main > section.archive .archive-results h4 {
+      font-size: 1rem;
+      color: #F9B513;
+      margin-bottom: 1rem; }
+
+    main > section.archive .archive-results ul {
+      list-style: none;
+      padding: 0; }
+
     main > section.archive .archive-results li {
-      margin-bottom: 0.5em; }
-      main > section.archive .archive-results li .search-highlight em, main > section.archive .archive-results li a em {
-        font-style: normal;
-        color: #eee; }
-      main > section.archive .archive-results li .search-highlight {
-        color: #aaa; }
-      main > section.archive .archive-results li .archive-date {
-        color: #777;
-        font-style: italic;
-        font-size: 0.75rem; }
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+    main > section.archive .archive-results li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0; }
+
+    main > section.archive .archive-results li a {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      transition: color 0.3s ease; }
+
+    main > section.archive .archive-results li a:hover {
+      color: #F9B513; }
+
+    main > section.archive .archive-results li .search-highlight {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.5; }
+
+    main > section.archive .archive-results li .search-highlight em,
+    main > section.archive .archive-results li a em {
+      font-style: normal;
+      color: #F9B513;
+      font-weight: 600; }
+
+    main > section.archive .archive-results li .archive-date {
+      margin-top: 0.5rem;
+      color: rgba(255, 255, 255, 0.4);
+      font-style: italic;
+      font-size: 0.75rem; }
+
   main > section.archive .archive-pagination {
-    margin-top: 1rem;
-    font-size: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
     text-align: center; }
+
     main > section.archive .archive-pagination a {
       display: inline-block;
-      visibility: visible;
-      margin-right: 1rem; }
-      main > section.archive .archive-pagination a.posthaven-archive-disabled {
-        color: #555;
-        cursor: inherit; }
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: rgba(249, 181, 19, 0.1);
+      border-radius: 0.25rem;
+      color: #F9B513;
+      transition: all 0.3s ease; }
+
+    main > section.archive .archive-pagination a:hover {
+      background-color: #F9B513;
+      color: #021923; }
+
+    main > section.archive .archive-pagination a.posthaven-archive-disabled {
+      color: rgba(255, 255, 255, 0.3);
+      background-color: transparent;
+      cursor: not-allowed; }
+
+  /* Responsive archive layout */
+  @media (max-width: 768px) {
+    main > section.archive {
+      padding: 1rem; }
+
+    main > section.archive .archive-months {
+      width: 100%; }
+
+    main > section.archive .archive-search form {
+      flex-direction: column; }
+
+    main > section.archive .archive-search input[type="text"] {
+      width: 100%; }
+
+    main > section.archive .archive-search input[type="submit"] {
+      width: 100%; }
+  }
 
 .posthaven-form-error {
   color: #ff6666; }
