@@ -4,7 +4,7 @@
   {% if  site.share_buttons_enabled? %}
     <hr>
     <div class="share-buttons">
-      <h4>Share</h4>
+      <h4 data-i18n="post.share">Partager</h4>
       {{ post | share_buttons }}
     </div>
   {% endif %}
@@ -12,7 +12,7 @@
   {% unless post.tags == empty %}
     <hr>
     <div class="tags">
-      <h4>Tags</h4>
+      <h4 data-i18n="post.tags">Tags</h4>
       <ul>
         {% for t in post.tags %}
           <li class="{{ t.url | text_if_current}}">
@@ -26,13 +26,13 @@
   {% if post.response_count > 0 %}
     <hr>
     <div class="responses">
-      <h4>{{ post.response_count | pluralize: 'Response' }}</h4>
+      <h4 data-count="{{ post.response_count }}" data-i18n-plural="post.responsesTitle">{{ post.response_count | pluralize: 'Response' }}</h4>
       {% for response in post.responses %}
         {% include 'response' %}
       {% endfor %}
       {% if post.anon_upvote_count > 0 %}
         <div class="response">
-          <div class="upvote">
+          <div class="upvote" data-count="{{ post.anon_upvote_count }}" data-i18n-upvote="post.upvoted">
             {{ post.anon_upvote_count | pluralize: 'visitor' }}
             upvoted this post.
           </div>
@@ -44,7 +44,7 @@
   {% if site.comments_enabled? %}
     <hr>
     <div class="new-comment">
-      <h4>New Comment</h4>
+      <h4 data-i18n="post.newComment">Nouveau commentaire</h4>
       {% form 'comment' %}
     </div>
   {% endif %}

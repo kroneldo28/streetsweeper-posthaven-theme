@@ -86,6 +86,12 @@
         'footer.cta': 'Reserve ta session gratuite →',
         'footer.copyright': '© ' + new Date().getFullYear() + ' Ronel Kouakep. Tous droits réservés.',
         'post.readMore': 'Lire la suite →',
+        'post.share': 'Partager',
+        'post.tags': 'Tags',
+        'post.newComment': 'Nouveau commentaire',
+        'post.responses': ['réponse', 'réponses'],
+        'post.responsesTitle': ['Réponse', 'Réponses'],
+        'post.upvoted': ['visiteur a aimé cet article.', 'visiteurs ont aimé cet article.'],
         'archive.title': 'Archives',
         'archive.searchTitle': 'Rechercher',
         'archive.browseByDate': 'Parcourir par date',
@@ -106,11 +112,23 @@
         'footer.cta': 'Book your free session →',
         'footer.copyright': '© ' + new Date().getFullYear() + ' Ronel Kouakep. All rights reserved.',
         'post.readMore': 'Read more →',
+        'post.share': 'Share',
+        'post.tags': 'Tags',
+        'post.newComment': 'New Comment',
+        'post.responses': ['response', 'responses'],
+        'post.responsesTitle': ['Response', 'Responses'],
+        'post.upvoted': ['visitor upvoted this post.', 'visitors upvoted this post.'],
         'archive.title': 'Archives',
         'archive.searchTitle': 'Search',
         'archive.browseByDate': 'Browse by date',
         'archive.results': 'Results'
       }
+    };
+
+    // Month names for date formatting
+    var months = {
+      fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+      en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     };
 
     var routes = {
@@ -170,6 +188,20 @@
       return 'fr';
     }
 
+    function formatDate(dateStr, lang) {
+      var parts = dateStr.split('-');
+      var year = parts[0];
+      var month = parseInt(parts[1], 10) - 1;
+      var day = parseInt(parts[2], 10);
+      var monthName = months[lang][month];
+
+      if (lang === 'fr') {
+        return day + ' ' + monthName + ' ' + year;
+      } else {
+        return monthName + ' ' + day + ', ' + year;
+      }
+    }
+
     function applyTranslations(lang) {
       var t = translations[lang];
       var r = routes[lang];
@@ -187,6 +219,34 @@
         var key = el.getAttribute('data-i18n-href');
         if (r[key]) {
           el.setAttribute('href', r[key]);
+        }
+      });
+
+      // Apply date formatting
+      document.querySelectorAll('[data-date]').forEach(function(el) {
+        var dateStr = el.getAttribute('data-date');
+        if (dateStr) {
+          el.textContent = formatDate(dateStr, lang);
+        }
+      });
+
+      // Apply plural translations (responses count)
+      document.querySelectorAll('[data-i18n-plural]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-plural');
+        var count = parseInt(el.getAttribute('data-count'), 10);
+        if (t[key] && !isNaN(count)) {
+          var form = count === 1 ? t[key][0] : t[key][1];
+          el.textContent = count + ' ' + form;
+        }
+      });
+
+      // Apply upvote translations
+      document.querySelectorAll('[data-i18n-upvote]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-upvote');
+        var count = parseInt(el.getAttribute('data-count'), 10);
+        if (t[key] && !isNaN(count)) {
+          var form = count === 1 ? t[key][0] : t[key][1];
+          el.textContent = count + ' ' + form;
         }
       });
     }

@@ -11,7 +11,7 @@
     {% endif %}
 
     <div class="date-author">
-      <a href="{{ post.url }}" class="date">{{ post.published_at | local_date: '%B %e, %Y' }}</a>
+      <a href="{{ post.url }}" class="date" data-date="{{ post.published_at | date: '%Y-%m-%d' }}">{{ post.published_at | local_date: '%B %e, %Y' }}</a>
 
       {% if post.show_byline? %}
         <span class="author">
@@ -41,7 +41,7 @@
     </div>
     {% if post.response_count > 0 %}
       <div class="response-count">
-        <a href="{{ post.url }}#comments" alt="{{ post.title }}">
+        <a href="{{ post.url }}#comments" alt="{{ post.title }}" data-count="{{ post.response_count }}" data-i18n-plural="post.responses">
           {{ post.response_count | pluralize: 'response' }}
         </a>
       </div>
