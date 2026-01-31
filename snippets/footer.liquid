@@ -285,8 +285,10 @@
         var text = el.textContent.trim().toLowerCase();
         if (text === 'next' && t['archive.next']) {
           el.textContent = t['archive.next'];
+          el.classList.add('pagination-next');
         } else if (text === 'previous' && t['archive.prev']) {
           el.textContent = t['archive.prev'];
+          el.classList.add('pagination-prev');
         }
       });
     }
