@@ -252,16 +252,7 @@
     }
 
     // Apply translations on page load
-    function init() {
-      var currentLang = detectLanguage();
-      applyTranslations(currentLang);
-    }
-
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
+    var currentLang = detectLanguage();
+    applyTranslations(currentLang);
   })();
 </script>
