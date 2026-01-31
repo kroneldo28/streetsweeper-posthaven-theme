@@ -21,7 +21,7 @@
 
   <div class="archive-results">
     <h4 data-i18n="archive.results">Résultats</h4>
-    <ul>
+    <ul class="results-list">
       {% archive_results %}
         <li class="archive-entry">
           <a href="{{ result.url }}">
@@ -36,6 +36,7 @@
         </li>
       {% endarchive_results %}
     </ul>
+    <a href="#" class="load-more-results" data-i18n="archive.loadMoreResults">Charger plus →</a>
 
     <div class="archive-pagination">
       {{ archive.pagination }}

@@ -797,7 +797,20 @@ main > section.archive {
     main > section.archive .archive-results li {
       margin-bottom: 1.25rem;
       padding-bottom: 1.25rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: none; }
+
+    /* Show first 5 results by default */
+    main > section.archive .archive-results li:nth-child(-n+5) {
+      display: block; }
+
+    /* Show more results classes */
+    main > section.archive .archive-results.show-results-10 li:nth-child(-n+10) { display: block; }
+    main > section.archive .archive-results.show-results-15 li:nth-child(-n+15) { display: block; }
+    main > section.archive .archive-results.show-results-20 li:nth-child(-n+20) { display: block; }
+    main > section.archive .archive-results.show-results-25 li:nth-child(-n+25) { display: block; }
+    main > section.archive .archive-results.show-results-30 li:nth-child(-n+30) { display: block; }
+    main > section.archive .archive-results.show-all-results li { display: block; }
 
     main > section.archive .archive-results li:last-child {
       border-bottom: none;
@@ -830,6 +843,21 @@ main > section.archive {
       color: rgba(255, 255, 255, 0.4);
       font-style: italic;
       font-size: 0.75rem; }
+
+    main > section.archive .archive-results .load-more-results {
+      margin-top: 1rem;
+      color: #F9B513;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      display: inline-block; }
+
+    main > section.archive .archive-results .load-more-results:hover {
+      color: #F1890C; }
+
+    main > section.archive .archive-results .load-more-results.hidden {
+      display: none; }
 
   main > section.archive .archive-pagination {
     margin-top: 1.5rem;
