@@ -8,15 +8,20 @@
     </a>
 
     <div class="nav-links">
-      <a href="https://ronelkouakep.com/about" data-i18n="nav.about" data-i18n-href="about">A propos</a>
-      <a href="https://ronelkouakep.com/services" data-i18n="nav.services" data-i18n-href="services">Services</a>
+      <a href="https://ronelkouakep.com/about" data-i18n="nav.about" data-i18n-href="about">À propos</a>
+      <a href="https://ronelkouakep.com/services" data-i18n="nav.services" data-i18n-href="services">Mes Services</a>
       <a href="https://ronelkouakep.com/portfolio" data-i18n="nav.portfolio" data-i18n-href="portfolio">Portfolio</a>
       <a href="{{ site.url }}" class="active" data-i18n="nav.blog">Blog</a>
-      <a href="https://ronelkouakep.com/contact" data-i18n="nav.contact" data-i18n-href="contact">Contact</a>
     </div>
 
     <div class="nav-right">
-      <a href="https://ronelkouakep.com/booking" class="nav-cta" data-i18n="nav.cta" data-i18n-href="booking">Prendre RDV</a>
+      <div class="lang-toggle" id="langToggle">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <span class="lang-separator">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+
+      <a href="https://ronelkouakep.com/booking" class="nav-cta" data-i18n="nav.cta" data-i18n-href="booking">Réserver</a>
 
       <!-- Hamburger button for mobile -->
       <button class="hamburger" aria-label="Menu" aria-expanded="false">
@@ -29,12 +34,11 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu">
-    <a href="https://ronelkouakep.com/about" data-i18n="nav.about" data-i18n-href="about">A propos</a>
-    <a href="https://ronelkouakep.com/services" data-i18n="nav.services" data-i18n-href="services">Services</a>
+    <a href="https://ronelkouakep.com/about" data-i18n="nav.about" data-i18n-href="about">À propos</a>
+    <a href="https://ronelkouakep.com/services" data-i18n="nav.services" data-i18n-href="services">Mes Services</a>
     <a href="https://ronelkouakep.com/portfolio" data-i18n="nav.portfolio" data-i18n-href="portfolio">Portfolio</a>
     <a href="{{ site.url }}" class="active" data-i18n="nav.blog">Blog</a>
-    <a href="https://ronelkouakep.com/contact" data-i18n="nav.contact" data-i18n-href="contact">Contact</a>
-    <a href="https://ronelkouakep.com/booking" class="mobile-cta" data-i18n="nav.cta" data-i18n-href="booking">Prendre RDV</a>
+    <a href="https://ronelkouakep.com/booking" class="mobile-cta" data-i18n="nav.cta" data-i18n-href="booking">Réserver</a>
   </div>
 </nav>
 
@@ -72,6 +76,23 @@
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Language toggle
+    var langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+      langToggle.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var lang = btn.getAttribute('data-lang');
+          localStorage.setItem('blogLang', lang);
+          langToggle.querySelectorAll('.lang-btn').forEach(function(b) {
+            b.classList.remove('active');
+          });
+          btn.classList.add('active');
+          // Trigger re-translation by dispatching custom event
+          window.dispatchEvent(new CustomEvent('langChange', { detail: { lang: lang } }));
+        });
+      });
+    }
 
     window.addEventListener('scroll', handleScroll);
     hamburger.addEventListener('click', toggleMenu);
