@@ -1333,9 +1333,9 @@ body > footer .footer-content {
    POST SEPARATION - Contrast between posts
    ======================================== */
 
-/* Hide any separators between posts */
-section.posts > *:not(article.post) {
-  display: none !important;
+/* Ensure all articles are visible */
+section.posts > article.post {
+  display: block !important;
 }
 
 /* Remove margins from posts section */
